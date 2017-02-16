@@ -99,7 +99,8 @@ class SalaryApp extends React.Component {
   }
   changeDefaults(period, currency) {
     return function() {
-      let current = this.state.current
+      // ceva mai simplu pentru clonarea unui obiect?
+      let current = Object.assign({}, this.state.current)
       if (period !== -1) {
         current.p = period
       }
@@ -108,7 +109,7 @@ class SalaryApp extends React.Component {
       }
       current.min = +this.displayHours(this.disp(this.norm(current.min), current.p, current.c))
       current.max = +this.displayHours(this.disp(this.norm(current.max), current.p, current.c))
-
+      console.log(current)
       this.setState({
         current: current
       })
@@ -255,7 +256,6 @@ class SalaryApp extends React.Component {
             flipCard={this.flipCard.bind(this)}
             c={this.state.c}
             p={this.state.p}
-            configChange={this.configChange.bind(this)}
             deleteCurrency={this.deleteCurrency.bind(this)}
             restoreDefault={this.restoreDefault.bind(this)}
             configCurrency={this.configCurrency.bind(this)}

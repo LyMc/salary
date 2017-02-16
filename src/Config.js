@@ -4,6 +4,8 @@ import Icon from './Icon'
 import TextField from 'material-ui/TextField'
 
 class Config extends React.Component {
+  // de ce n-am nevoie de constructor?
+  // de unde știe cine e props?
   /*constructor(props) {
     super(props)
   }*/
@@ -47,7 +49,7 @@ class Config extends React.Component {
                     style={{
                       width: 'auto'
                     }}
-                    onChange={this.props.configChange(currency.name)}
+                    onChange={this.configCurrency('change', currency.name)}
                   />
                 </div>
                 <div className="col">
@@ -57,6 +59,7 @@ class Config extends React.Component {
                     style={{
                       width: 'auto'
                     }}
+                    onChange={this.configCurrency('icon', currency.name)}
                   />
                 </div>
                 <div className="col" style={{width: 24, flex: '0 0 24px'}} onClick={this.props.deleteCurrency(currency.name)}><Icon name="delete"/></div>
